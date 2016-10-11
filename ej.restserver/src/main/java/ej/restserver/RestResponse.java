@@ -16,28 +16,29 @@ import ej.hoka.http.HTTPResponse;
  */
 public class RestResponse extends HTTPResponse {
 
+	/**
+	 * Default content encoding for Rest response.
+	 */
+	public static final String DEFAULT_ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+
 	public RestResponse(String status, String mimeType, InputStream data) {
 		super(data);
+		if (status == null || mimeType == null) {
+			throw new NullPointerException();
+		}
 		setMimeType(mimeType);
 		setStatus(status);
 	}
 
 	public RestResponse(String status, String mimeType, String text) throws IOException {
-		super(text == null ? "" : text);
-		if (mimeType == null) {
-			throw new NullPointerException();
-		}
-
-		setStatus(status);
-		setMimeType(mimeType);
+		this(status, mimeType, text, DEFAULT_ENCODING);
 	}
 
 	public RestResponse(String status, String mimeType, String text, String encoding) throws IOException {
-		super(text == null ? "" : text, encoding);
-		if (mimeType == null) {
+		super(text, encoding);
+		if (status == null || mimeType == null) {
 			throw new NullPointerException();
 		}
-
 		setStatus(status);
 		setMimeType(mimeType);
 	}
