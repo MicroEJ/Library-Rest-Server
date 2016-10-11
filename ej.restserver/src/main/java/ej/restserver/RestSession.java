@@ -6,8 +6,6 @@
  */
 package ej.restserver;
 
-import java.util.Hashtable;
-
 import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
 import ej.hoka.http.HTTPSession;
@@ -21,28 +19,23 @@ public class RestSession extends HTTPSession {
 		this.server = server;
 	}
 
+	/**
+	 * Answers to the given request.
+	 *
+	 * <p>
+	 * Active server request resolvers are invokes one by one in order to respond to given request. Returned response is
+	 * the one by the first resolver accepting to respond to the request.
+	 */
 	@Override
 	protected HTTPResponse answer(HTTPRequest request) {
-		String uri = request.getURI();
-		for (RestEndpoint endpoint : this.server.getEndpoints()) {
-			if (endpoint.getURI().equals(uri)) {
-				Hashtable<String, String> headers = request.getHeader();
-				Hashtable<String, String> parameters = request.getParameters();
-				switch (request.getMethod()) {
-				case HTTPRequest.GET:
-					return endpoint.get(request, headers, parameters);
-				case HTTPRequest.POST:
-					return endpoint.post(request, headers, parameters);
-				case HTTPRequest.PUT:
-					return endpoint.put(request, headers, parameters);
-				case HTTPRequest.DELETE:
-					return endpoint.delete(request, headers, parameters);
-				default:
-					throw new RuntimeException("Unhandled HTTP verb"); //$NON-NLS-1$
-				}
+		for (RequestHandler handler : this.server.getRequestResolvers()) {
+			HTTPResponse answer = handler.answer(this.server, request);
+			if (answer != null) {
+				return answer;
 			}
 		}
-		throw new RuntimeException("Unhandled Endpoint " + uri); //$NON-NLS-1$
+
+		return HTTPResponse.RESPONSE_NOT_FOUND;
 	}
 
 }
