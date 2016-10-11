@@ -37,7 +37,7 @@ public class SocketConnection implements ISocketConnection {
 		try {
 			return this.socket.getInetAddress().getHostAddress();
 		} catch (NullPointerException e) {
-			throw new IOException();
+			throw new IOException(e);
 		}
 	}
 

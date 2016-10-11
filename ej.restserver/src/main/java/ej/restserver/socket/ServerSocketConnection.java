@@ -51,7 +51,7 @@ public class ServerSocketConnection implements IServerSocketConnection {
 		try {
 			return this.server.getInetAddress().getHostAddress();
 		} catch (NullPointerException e) {
-			throw new IOException();
+			throw new IOException(e);
 		}
 	}
 
