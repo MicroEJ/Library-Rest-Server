@@ -14,7 +14,7 @@ import ej.hoka.http.HTTPResponse;
 /**
  *
  */
-public abstract class RestEndpoint {
+public class RestEndpoint {
 
 	private static final String ENDPOINT_PREFIX = "/"; //$NON-NLS-1$
 
