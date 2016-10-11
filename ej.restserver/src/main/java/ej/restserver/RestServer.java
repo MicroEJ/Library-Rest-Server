@@ -22,8 +22,8 @@ import ej.restserver.socket.ServerSocketConnection;
  */
 public class RestServer extends HTTPServer {
 
-	private final LinkedList<RestEndpoint> endpoints;
-	private final LinkedList<RequestHandler> requestHandlers;
+	private final List<RestEndpoint> endpoints;
+	private final List<RequestHandler> requestHandlers;
 
 	/**
 	 * @param connection
