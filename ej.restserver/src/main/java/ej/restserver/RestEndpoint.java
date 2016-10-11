@@ -9,6 +9,7 @@ package ej.restserver;
 import java.util.Hashtable;
 
 import ej.hoka.http.HTTPRequest;
+import ej.hoka.http.HTTPResponse;
 
 /**
  *
@@ -39,46 +40,24 @@ public abstract class RestEndpoint {
 		return this.uri;
 	}
 
-	public RestResponse get(HTTPRequest request, Hashtable<String, String> headers,
+	public HTTPResponse get(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
-	public RestResponse post(HTTPRequest request, Hashtable<String, String> headers,
+	public HTTPResponse post(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
-	public RestResponse put(HTTPRequest request, Hashtable<String, String> headers,
+	public HTTPResponse put(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
-	public RestResponse delete(HTTPRequest request, Hashtable<String, String> headers,
+	public HTTPResponse delete(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
-
-	public abstract RestResponse ok();
-
-	public abstract RestResponse movePermanently();
-
-	public abstract RestResponse notModified();
-
-	public abstract RestResponse forbidden();
-
-	public abstract RestResponse notFound();
-
-	public abstract RestResponse notAllowed();
-
-	public abstract RestResponse notAcceptable();
-
-	public abstract RestResponse badRequest();
-
-	public abstract RestResponse unsupportedMediaType();
-
-	public abstract RestResponse internalError();
-
-	public abstract RestResponse unimplemented();
 
 }
