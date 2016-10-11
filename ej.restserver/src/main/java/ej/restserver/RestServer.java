@@ -40,7 +40,13 @@ public class RestServer extends HTTPServer {
 		this.requestHandlers.add(new EndpointHandler());
 	}
 
-	public void addPath(RestEndpoint endpoint) {
+	/**
+	 * Adds an endpoint to this server.
+	 *
+	 * @param endpoint
+	 *            the endpoint to add.
+	 */
+	public void addEndpoint(RestEndpoint endpoint) {
 		this.endpoints.add(endpoint);
 	}
 
@@ -54,6 +60,11 @@ public class RestServer extends HTTPServer {
 		this.requestHandlers.add(handler);
 	}
 
+	/**
+	 * Gets the list of active endpoints.
+	 *
+	 * @return an unmodifiable list of server active endpoints.
+	 */
 	public List<RestEndpoint> getEndpoints() {
 		return Collections.unmodifiableList(this.endpoints);
 	}
