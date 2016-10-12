@@ -14,14 +14,17 @@ import java.net.Socket;
 import ej.hoka.net.ISocketConnection;
 
 /**
- * IS2T-API J2SE {@link java.net.Socket} connection
+ * A socket connection implementation based on Java standard sockets.
  */
 public class SocketConnection implements ISocketConnection {
 
 	private final Socket socket;
 
 	/**
-	 * IS2T-API Create a new connection wrapper on the given {@link Socket}
+	 * Instantiates a new socket connection that wraps given Java socket.
+	 *
+	 * @param socket
+	 *            the underlying socket.
 	 */
 	public SocketConnection(Socket socket) {
 		this.socket = socket;

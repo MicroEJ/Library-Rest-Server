@@ -13,14 +13,17 @@ import ej.hoka.net.IServerSocketConnection;
 import ej.hoka.net.ISocketConnection;
 
 /**
- * IS2T-API J2SE {@link java.net.ServerSocket} connection
+ * A server socket connection implementation based on Java standard sockets.
  */
 public class ServerSocketConnection implements IServerSocketConnection {
 
-	protected ServerSocket server;
+	private ServerSocket server;
 
 	/**
-	 * Instantiates an empty connection. When port is set, connection will be opened.
+	 * Instantiates an empty server socket connection. When port is set, connection will be opened.
+	 *
+	 * <p>
+	 * This constructor is used by service loaders.
 	 *
 	 * @see #setPort(int)
 	 */
@@ -31,6 +34,11 @@ public class ServerSocketConnection implements IServerSocketConnection {
 
 	/**
 	 * Instantiates a new connection wrapper on the given port.
+	 *
+	 * @param port
+	 *            the port number, or 0 to use a port number that is automatically allocated
+	 * @throws IOException
+	 *             if an error occurs when opening connection.
 	 */
 	public ServerSocketConnection(int port) throws IOException {
 		this.setPort(port);

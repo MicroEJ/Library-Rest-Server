@@ -18,7 +18,14 @@ import ej.hoka.net.IServerSocketConnection;
 import ej.restserver.socket.ServerSocketConnection;
 
 /**
+ * A simple implementation of HTTP server capable of easily exposing endpoints.
  *
+ * <p>
+ * REST servers can always handle requests that target endpoints. Other kind of request are handles by custom request
+ * handlers.
+ *
+ * @see EndpointHandler
+ * @see RequestHandler
  */
 public class RestServer extends HTTPServer {
 
@@ -26,10 +33,20 @@ public class RestServer extends HTTPServer {
 	private final List<RequestHandler> requestHandlers;
 
 	/**
-	 * @param connection
+	 * Creates a new server bounded to given port.
+	 *
+	 * <p>
+	 * This constructor looks for server socket service implementation using a Service Loader. The returned server
+	 * socket will be used. If no service is declared, default implementation is used (Java standard server socket).
+	 *
+	 * @param port
+	 *            the port.
 	 * @param maxSimultaneousConnection
+	 *            the maximal number of simultaneously opened connections.
 	 * @param jobCountBySession
+	 *            the number of parallel jobs to process by opened sessions.
 	 * @throws IOException
+	 *             if server cannot be bind to given port.
 	 */
 	public RestServer(int port, int maxSimultaneousConnection, int jobCountBySession) throws IOException {
 		super(ServiceLoaderFactory.getServiceLoader()

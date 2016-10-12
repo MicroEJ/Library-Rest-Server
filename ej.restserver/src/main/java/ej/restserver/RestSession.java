@@ -10,10 +10,23 @@ import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
 import ej.hoka.http.HTTPSession;
 
+/**
+ * A REST session handles HTTP requests.
+ *
+ * <p>
+ * It loops over server active request handler to find the first one capable of handling the request and return its
+ * response.
+ */
 public class RestSession extends HTTPSession {
 
 	private final RestServer server;
 
+	/**
+	 * Creates a new REST session for given server.
+	 *
+	 * @param server
+	 *            the underlying REST server.
+	 */
 	public RestSession(RestServer server) {
 		super(server);
 		this.server = server;

@@ -11,6 +11,11 @@ import java.io.IOException;
 import ej.hoka.net.IClientSocketConnection;
 import ej.hoka.net.IClientSocketConnectionFactory;
 
+/**
+ * A client socket connection factory for client socket connection based on Java sockets.
+ *
+ * @see ClientSocketConnection
+ */
 public class ClientSocketConnectionFactory implements IClientSocketConnectionFactory {
 
 	@Override
