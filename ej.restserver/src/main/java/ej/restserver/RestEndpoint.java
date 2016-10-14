@@ -9,20 +9,47 @@ package ej.restserver;
 import java.util.Hashtable;
 
 import ej.hoka.http.HTTPRequest;
+import ej.hoka.http.HTTPResponse;
 
 /**
+ * A REST endpoint exposes resources on a REST server.
  *
+ * <p>
+ * Allow HTTP verbs are {@code GET}, {@code POST}, {@code PUT} and {@code DELETE}.
  */
-public abstract class RestEndpoint {
+public class RestEndpoint {
 
 	private static final String ENDPOINT_PREFIX = "/"; //$NON-NLS-1$
 
+	/**
+	 * The URI this endpoint answers.
+	 */
 	protected String uri;
 
-	public RestEndpoint(String uri) {
+	/**
+	 * Create a new endpoint at given URI.
+	 *
+	 * <p>
+	 * For example, assuming a REST server running at {@code 127.0.0.1:80}, following code creates an endpoint at
+	 * {@code http://127.0.0.1:80/my/custom/endpoint}
+	 *
+	 * <pre>
+	 * server.add(new RestEndpoint("/my/custom/endpoint"));
+	 * </pre>
+	 *
+	 * If URI does not start with a {@code /} character, it is automatically added.
+	 *
+	 * @param uri
+	 *            the URI of this endpoint.
+	 * @throws IllegalArgumentException
+	 *             if URI is empty
+	 */
+	public RestEndpoint(String uri) throws IllegalArgumentException {
 		if (uri == null) {
 			throw new NullPointerException();
 		}
+
+		uri = uri.trim();
 
 		if (uri.isEmpty()) {
 			throw new IllegalArgumentException("URI cannot be empty"); //$NON-NLS-1$
@@ -35,50 +62,89 @@ public abstract class RestEndpoint {
 		this.uri = uri;
 	}
 
+	/**
+	 * Gets this endpoint URI.
+	 *
+	 * @return this endpoint URI.
+	 */
 	public String getURI() {
 		return this.uri;
 	}
 
-	public RestResponse get(HTTPRequest request, Hashtable<String, String> headers,
+	/**
+	 * Handles {@code GET} request on this endpoint.
+	 *
+	 * <p>
+	 * Default implementation return a a status code {@code 501}
+	 *
+	 * @param request
+	 *            the request to handle.
+	 * @param headers
+	 *            request headers.
+	 * @param parameters
+	 *            parsed query and body parameters.
+	 * @return an HTTP response.
+	 */
+	public HTTPResponse get(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
-	public RestResponse post(HTTPRequest request, Hashtable<String, String> headers,
+	/**
+	 * Handles {@code POST} request on this endpoint.
+	 *
+	 * <p>
+	 * Default implementation return a a status code {@code 501}
+	 *
+	 * @param request
+	 *            the request to handle.
+	 * @param headers
+	 *            request headers.
+	 * @param parameters
+	 *            parsed query and body parameters.
+	 * @return an HTTP response.
+	 */
+	public HTTPResponse post(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
-	public RestResponse put(HTTPRequest request, Hashtable<String, String> headers,
+	/**
+	 * Handles {@code PUT} request on this endpoint.
+	 *
+	 * <p>
+	 * Default implementation return a a status code {@code 501}
+	 *
+	 * @param request
+	 *            the request to handle.
+	 * @param headers
+	 *            request headers.
+	 * @param parameters
+	 *            parsed query and body parameters.
+	 * @return an HTTP response.
+	 */
+	public HTTPResponse put(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
-	public RestResponse delete(HTTPRequest request, Hashtable<String, String> headers,
+	/**
+	 * Handles {@code DELETE} request on this endpoint.
+	 *
+	 * <p>
+	 * Default implementation return a a status code {@code 501}
+	 *
+	 * @param request
+	 *            the request to handle.
+	 * @param headers
+	 *            request headers.
+	 * @param parameters
+	 *            parsed query and body parameters.
+	 * @return an HTTP response.
+	 */
+	public HTTPResponse delete(HTTPRequest request, Hashtable<String, String> headers,
 			Hashtable<String, String> parameters) {
-		return unimplemented();
+		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
-
-	public abstract RestResponse ok();
-
-	public abstract RestResponse movePermanently();
-
-	public abstract RestResponse notModified();
-
-	public abstract RestResponse forbidden();
-
-	public abstract RestResponse notFound();
-
-	public abstract RestResponse notAllowed();
-
-	public abstract RestResponse notAcceptable();
-
-	public abstract RestResponse badRequest();
-
-	public abstract RestResponse unsupportedMediaType();
-
-	public abstract RestResponse internalError();
-
-	public abstract RestResponse unimplemented();
 
 }

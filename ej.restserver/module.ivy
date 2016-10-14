@@ -6,7 +6,7 @@
 -->
 <ivy-module version="2.0" xmlns:ea="http://www.easyant.org"> 
 	<info organisation="ej.library.iot" module="restserver" status="integration" revision="1.0.0">
-		<ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javalib" revision="+">
+		<ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javalib" revision="+" skip.test="true">
 		</ea:build>
 	</info>
 	<configurations defaultconfmapping="default->default;provided->provided">

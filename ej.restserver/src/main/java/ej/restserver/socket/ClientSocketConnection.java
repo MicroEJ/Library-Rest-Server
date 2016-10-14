@@ -11,10 +11,23 @@ import java.net.Socket;
 
 import ej.hoka.net.IClientSocketConnection;
 
+/**
+ * A client socket connection implementation based on Java standard sockets.
+ */
 public class ClientSocketConnection implements IClientSocketConnection {
 
-	protected Socket client;
+	private Socket client;
 
+	/**
+	 * Instantiates a new client socket connection. Underlying socket is immediately created.
+	 *
+	 * @param host
+	 *            the host, or {@code null} for loopback address.
+	 * @param port
+	 *            the port number.
+	 * @throws IOException
+	 *             if socket cannot be created.
+	 */
 	public ClientSocketConnection(String host, int port) throws IOException {
 		this.client = new Socket(host, port);
 	}
