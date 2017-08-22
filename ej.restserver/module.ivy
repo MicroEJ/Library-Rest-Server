@@ -5,8 +5,8 @@
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 -->
 <ivy-module version="2.0" xmlns:ea="http://www.easyant.org"> 
-	<info organisation="ej.library.iot" module="restserver" status="integration" revision="1.0.1">
-		<ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javalib" revision="+" skip.test="true">
+	<info organisation="ej.library.iot" module="restserver" status="integration" revision="2.0.0">
+		<ea:build organisation="com.is2t.easyant.buildtypes" module="build-microej-javalib" revision="4.+" skip.test="true">
 		</ea:build>
 	</info>
 	<configurations defaultconfmapping="default->default;provided->provided">
@@ -30,9 +30,10 @@
 		-->
 		<dependency conf="provided->*" org="ej.api" name="edc" rev="[1.2.0-RC0,2.0.0-RC0["/>
 		<dependency conf="provided->*" org="ej.api" name="net" rev="[1.0.0-RC0,2.0.0-RC0["/>
-		<dependency org="ej.library.iot" name="hoka" rev="[2.0.0-RC0,3.0.0-RC0["/>
+		<dependency org="ej.library.iot" name="hoka" rev="[3.0.0-RC0,4.0.0-RC0["/>
 		<dependency org="ej.library.runtime" name="components" rev="[3.1.0-RC0,4.0.0-RC0["/>
 		<dependency org="ej.library.eclasspath" name="collectionsutil" rev="[1.0.0-RC0,2.0.0-RC0["/>
 		<dependency org="ej.library.eclasspath" name="lists" rev="[1.0.0-RC0,2.0.0-RC0["/>
+		
 	</dependencies>
 </ivy-module>
