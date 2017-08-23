@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Application-Id: RestServerExample
-Application-Version: 1.0.0
-Application-PrintableName: RestServerExample
-Application-Description: Rest Server Example
-Application-IconsDirectory: icons
