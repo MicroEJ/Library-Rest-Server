@@ -2,7 +2,7 @@
 	Ivy
 -->
 <ivy-module version="2.0" xmlns:ea="http://www.easyant.org" xmlns:m="http://ant.apache.org/ivy/extra"> 
-    <info organisation="com.microej.restserver" module="rest-server" status="integration" revision="0.1.0">
+    <info organisation="com.microej.restserver" module="rest-server" status="integration" revision="1.0.0">
         <ea:build organisation="com.is2t.easyant.buildtypes" module="build-application" revision="5.5.+">
         	<ea:property name="test.run.includes.pattern" value="**/_AllTests_*.class"/>
         </ea:build>
