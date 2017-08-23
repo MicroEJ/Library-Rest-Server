@@ -17,7 +17,7 @@ Add the following line to your `module.ivy` or your `ivy.xml`:
 
 # Dependencies
 _All dependencies are retrieved transitively by Ivy resolver_.
-  - Hoka 2.0.0 or higher
+  - Hoka 3.0.0 or higher
   - Components 3.1.0 or higher
   - EClasspath Lists 1.0.0 or higher
   - EClasspath Collections Utils 1.0.0 or higher
