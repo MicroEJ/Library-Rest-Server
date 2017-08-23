@@ -7,15 +7,13 @@
 package ej.restserver;
 
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import ej.components.dependencyinjection.ServiceLoaderFactory;
 import ej.hoka.http.HTTPServer;
 import ej.hoka.http.HTTPSession;
-import ej.hoka.net.IServerSocketConnection;
-import ej.restserver.socket.ServerSocketConnection;
 
 /**
  * A simple implementation of HTTP server capable of easily exposing endpoints.
@@ -49,9 +47,8 @@ public class RestServer extends HTTPServer {
 	 *             if server cannot be bind to given port.
 	 */
 	public RestServer(int port, int maxSimultaneousConnection, int jobCountBySession) throws IOException {
-		super(ServiceLoaderFactory.getServiceLoader()
-				.getService(IServerSocketConnection.class, ServerSocketConnection.class).setPort(port),
-				maxSimultaneousConnection, jobCountBySession);
+		super(new ServerSocket(port), maxSimultaneousConnection, jobCountBySession);
+
 		this.endpoints = new LinkedList<RestEndpoint>();
 		this.requestHandlers = new LinkedList<RequestHandler>();
 		this.requestHandlers.add(new EndpointHandler());
