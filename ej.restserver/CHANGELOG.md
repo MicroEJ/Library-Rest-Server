@@ -4,6 +4,10 @@
 	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 -->
 
+## 3.1.0 (2018-05-29)
+Features:
+  - J0152RS-2 Add resource and gzip endpoints.
+  
 ## 3.0.0 (2018-02-16)
 Features:
   - Update HOKA version 4.x.
