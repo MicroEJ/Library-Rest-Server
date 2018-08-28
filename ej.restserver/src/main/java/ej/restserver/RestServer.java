@@ -1,12 +1,13 @@
 /*
  * Java
  *
- * Copyright 2016 IS2T. All rights reserved.
+ * Copyright 2016-2018 IS2T. All rights reserved.
  * IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package ej.restserver;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -47,8 +48,10 @@ public class RestServer extends HTTPServer {
 	 *             if server cannot be bind to given port.
 	 */
 	public RestServer(int port, int maxSimultaneousConnection, int jobCountBySession) throws IOException {
-		super(new ServerSocket(port), maxSimultaneousConnection, jobCountBySession);
-
+		super(new ServerSocket(), maxSimultaneousConnection, jobCountBySession);
+		ServerSocket currentConnection = getCurrentConnection();
+		currentConnection.setReuseAddress(true);
+		currentConnection.bind(new InetSocketAddress(port));
 		this.endpoints = new LinkedList<RestEndpoint>();
 		this.requestHandlers = new LinkedList<RequestHandler>();
 		this.requestHandlers.add(new EndpointHandler());

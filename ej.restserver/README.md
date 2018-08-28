@@ -1,15 +1,9 @@
-<!--
-	Markdown
-	Copyright 2014-2016 IS2T. All rights reserved.
-	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
--->
-
 # Overview
 A simple REST server implementation over Hoka library.
 
 # Usage
 Add the following line to your `module.ivy` or your `ivy.xml`:
-> `<dependency org="ej.library.iot" name="restserver" rev="1.+"/>`
+> `<dependency org="ej.library.iot" name="restserver" rev="+"/>`
 
 # Requirements
   - EDC-1.2 or higher
@@ -27,3 +21,9 @@ N/A
 
 # Restrictions
 None.
+
+<!--
+	Markdown
+	Copyright 2014-2018 IS2T. All rights reserved.
+	IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
