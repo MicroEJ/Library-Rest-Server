@@ -1,12 +1,12 @@
 /*
  * Java
  *
- * Copyright 2016 IS2T. All rights reserved
+ * Copyright 2016-2018 IS2T. All rights reserved.
  * IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package ej.restserver;
 
-import java.util.Hashtable;
+import java.util.Map;
 
 import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
@@ -85,8 +85,7 @@ public class RestEndpoint {
 	 *            parsed query and body parameters.
 	 * @return an HTTP response.
 	 */
-	public HTTPResponse get(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse get(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
@@ -104,8 +103,7 @@ public class RestEndpoint {
 	 *            parsed query and body parameters.
 	 * @return an HTTP response.
 	 */
-	public HTTPResponse post(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse post(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
@@ -123,8 +121,7 @@ public class RestEndpoint {
 	 *            parsed query and body parameters.
 	 * @return an HTTP response.
 	 */
-	public HTTPResponse put(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse put(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 
@@ -142,8 +139,7 @@ public class RestEndpoint {
 	 *            parsed query and body parameters.
 	 * @return an HTTP response.
 	 */
-	public HTTPResponse delete(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse delete(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return HTTPResponse.RESPONSE_NOT_IMPLEMENTED;
 	}
 

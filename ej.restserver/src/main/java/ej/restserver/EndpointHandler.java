@@ -1,12 +1,12 @@
 /*
  * Java
  *
- * Copyright 2016 IS2T. All rights reserved.
+ * Copyright 2016-2018 IS2T. All rights reserved.
  * IS2T PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package ej.restserver;
 
-import java.util.Hashtable;
+import java.util.Map;
 
 import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
@@ -24,8 +24,8 @@ public class EndpointHandler implements RequestHandler {
 		String uri = request.getURI();
 		for (RestEndpoint endpoint : server.getEndpoints()) {
 			if (endpoint.getURI().equals(uri)) {
-				Hashtable<String, String> headers = request.getHeader();
-				Hashtable<String, String> parameters = request.getParameters();
+				Map<String, String> headers = request.getHeader();
+				Map<String, String> parameters = request.getParameters();
 				switch (request.getMethod()) {
 				case HTTPRequest.GET:
 					return endpoint.get(request, headers, parameters);
