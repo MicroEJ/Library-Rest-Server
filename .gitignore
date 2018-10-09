@@ -1,2 +1,4 @@
 restserver-example/bin/
 restserver-example/src/.generated~/
+restserver-example/.sonar/
+restserver-example/target~/
