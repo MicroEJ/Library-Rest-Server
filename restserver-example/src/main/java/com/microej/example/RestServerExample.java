@@ -13,7 +13,9 @@ import java.util.Properties;
 import java.util.Set;
 
 import ej.hoka.http.body.StringBodyParserFactory;
+import ej.restserver.RestEndpoint;
 import ej.restserver.RestServer;
+import ej.restserver.endpoint.AliasEndpoint;
 import ej.restserver.endpoint.GzipResourceEndpoint;
 import ej.restserver.endpoint.ResourceRestEndpoint;
 
@@ -49,17 +51,17 @@ public class RestServerExample {
 			if (filePath.startsWith(baseResourceDir)) {
 				endpoint = SLASH + filePath.substring(baseResourceDir.length());
 			}
+			RestEndpoint restEndpoint;
 			if (filePath.endsWith(GzipResourceEndpoint.GZIP_FILE_EXTENSION)) {
 				endpoint = endpoint.substring(0, endpoint.length() - GzipResourceEndpoint.GZIP_FILE_EXTENSION.length());
-				if (endpoint.equals(homePage)) {
-					server.addEndpoint(new GzipResourceEndpoint(SLASH, filePath));
-				}
-				server.addEndpoint(new GzipResourceEndpoint(endpoint, filePath));
+				restEndpoint = new GzipResourceEndpoint(endpoint, filePath);
 			} else {
-				if (endpoint.equals(homePage)) {
-					server.addEndpoint(new ResourceRestEndpoint(SLASH, filePath));
-				}
-				server.addEndpoint(new ResourceRestEndpoint(endpoint, filePath));
+				restEndpoint = new ResourceRestEndpoint(endpoint, filePath);
+			}
+
+			server.addEndpoint(restEndpoint);
+			if (endpoint.equals(homePage)) {
+				server.addEndpoint(new AliasEndpoint(SLASH, restEndpoint));
 			}
 		}
 	}
