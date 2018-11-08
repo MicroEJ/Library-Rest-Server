@@ -15,12 +15,12 @@ import ej.restserver.RestEndpoint;
 /**
  * An endpoint forwarding its requests to another {@link RestEndpoint}.
  */
-public class ForwardingEndpoint extends RestEndpoint {
+public class AliasEndpoint extends RestEndpoint {
 
 	private RestEndpoint endpoint;
 
 	/**
-	 * Instantiates a {@link ForwardingEndpoint}.
+	 * Instantiates a {@link AliasEndpoint}.
 	 *
 	 * @param uri
 	 *            the uri, cannot be <code>null</code>.
@@ -29,7 +29,7 @@ public class ForwardingEndpoint extends RestEndpoint {
 	 * @throws IllegalArgumentException
 	 *             if URI is empty
 	 */
-	public ForwardingEndpoint(String uri, RestEndpoint endpoint) {
+	public AliasEndpoint(String uri, RestEndpoint endpoint) {
 		super(uri);
 		if (endpoint == null) {
 			throw new NullPointerException();
