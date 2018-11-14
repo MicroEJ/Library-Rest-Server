@@ -1,3 +1,10 @@
+## 1.2.0 (2018-11-08)
+
+Features:
+
+  - Use Alias endpoint.
+  
+
 ## 1.1.0 (2018-10-09)
 
 Features:
