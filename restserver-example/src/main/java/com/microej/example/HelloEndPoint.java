@@ -20,7 +20,6 @@ public class HelloEndPoint extends RestEndpoint {
 
 	public HelloEndPoint() throws IllegalArgumentException {
 		super(END_POINT);
-
 	}
 
 	@Override

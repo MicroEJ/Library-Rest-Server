@@ -11,6 +11,8 @@ import java.util.Map.Entry;
 
 import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
+import ej.hoka.http.body.BodyParser;
+import ej.hoka.http.body.StringBodyParser;
 import ej.restserver.RequestHandler;
 import ej.restserver.RestServer;
 
@@ -37,6 +39,12 @@ public class DumpRequestHandler implements RequestHandler {
 			for (Entry<String, String> entry : request.getHeader().entrySet()) {
 				System.out.println("      * " + entry.getKey() + " : " + entry.getValue());
 			}
+		}
+		System.out.println(" * BODY : ");
+		BodyParser bodyParser = request.getBodyParser();
+		if (bodyParser instanceof StringBodyParser) {
+			String body = ((StringBodyParser) bodyParser).getBody();
+			System.out.println(body);
 		}
 		System.out.println(" ****** ");
 	}

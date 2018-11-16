@@ -1,7 +1,13 @@
+## 3.2.0 (2018-11-08)
+
+Features:
+  - J0152RS-5 Add forward endpoint.
+  - J0152RS-5 ResourceRestEndPoint supports set of mime type.
+
 ## 3.1.1 (2018-08-27)
 
 Bug fixes:
-  - J0152RS-3 setReuseAddress to avoid net exception -7 
+  - J0152RS-3 setReuseAddress to avoid net exception -7.
 
 ## 3.1.0 (2018-05-29)
 

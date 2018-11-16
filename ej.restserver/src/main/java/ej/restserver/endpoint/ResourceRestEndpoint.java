@@ -21,6 +21,7 @@ import ej.restserver.RestResponse;
  */
 public class ResourceRestEndpoint extends RestEndpoint {
 
+	private String mimetype;
 	/**
 	 * Path to embedded resource to serve.
 	 */
@@ -30,12 +31,28 @@ public class ResourceRestEndpoint extends RestEndpoint {
 	 * Creates a static resource end-point that responds to given URI and serves given resource.
 	 *
 	 * @param uri
-	 *            the end-point URI.
+	 *            the end-point URI, cannot be <code>null</code>.
 	 * @param resource
-	 *            the resource to serve.
+	 *            the resource to serve, cannot be <code>null</code>.
 	 */
 	public ResourceRestEndpoint(String uri, String resource) {
+		this(uri, resource, null);
+	}
+
+	/**
+	 * Creates a static resource end-point that responds to given URI and serves given resource.
+	 *
+	 * @param uri
+	 *            the end-point URI, cannot be <code>null</code>.
+	 * @param resource
+	 *            the resource to serve, cannot be <code>null</code>.
+	 * @param mimetype
+	 *            the mime type of the resource, if <code>null</code>, the mimetype will be computed.
+	 * @see MIMEUtils#getMIMEType(String)
+	 */
+	public ResourceRestEndpoint(String uri, String resource, String mimetype) {
 		super(uri);
+		this.mimetype = mimetype;
 		if (resource == null) {
 			throw new NullPointerException();
 		}
@@ -65,9 +82,12 @@ public class ResourceRestEndpoint extends RestEndpoint {
 			return HTTPResponse.RESPONSE_NOT_FOUND;
 		}
 
-		String mimeType = MIMEUtils.getMIMEType(this.resource);
+		String mimeType = this.mimetype;
 		if (mimeType == null) {
-			mimeType = MIMEUtils.MIME_DEFAULT_BINARY;
+			mimeType = MIMEUtils.getMIMEType(this.resource);
+			if (mimeType == null) {
+				mimeType = MIMEUtils.MIME_DEFAULT_BINARY;
+			}
 		}
 
 		return new RestResponse(HTTPConstants.HTTP_STATUS_OK, mimeType, resourceAsStream);
@@ -79,4 +99,23 @@ public class ResourceRestEndpoint extends RestEndpoint {
 		return this.getResourceResponse();
 	}
 
+	/**
+	 * Gets the mimetype.
+	 *
+	 * @return the mimetype, can be <code>null</code>.
+	 */
+	public String getMimetype() {
+		return this.mimetype;
+	}
+
+	/**
+	 * Sets the mimetype.
+	 *
+	 * @param mimetype
+	 *            the mimetype to set, if <code>null</code>, the type will be computed.
+	 * @see MIMEUtils#getMIMEType(String)
+	 */
+	public void setMimetype(String mimetype) {
+		this.mimetype = mimetype;
+	}
 }
