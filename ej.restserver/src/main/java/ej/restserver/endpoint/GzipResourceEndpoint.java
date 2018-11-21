@@ -30,12 +30,27 @@ public class GzipResourceEndpoint extends ResourceRestEndpoint {
 	 * Creates a static gzip resource end-point that responds to given URI and serves given resource.
 	 *
 	 * @param uri
-	 *            the end-point URI.
+	 *            the end-point URI, cannot be <code>null</code>.
 	 * @param resource
-	 *            the Gzip resource to serve.
+	 *            the GZip to serve, cannot be <code>null</code>.
 	 */
 	public GzipResourceEndpoint(String uri, String resource) {
 		super(uri, resource);
+	}
+
+	/**
+	 * Creates a static gzip resource end-point that responds to given URI and serves given resource.
+	 *
+	 * @param uri
+	 *            the end-point URI, cannot be <code>null</code>.
+	 * @param resource
+	 *            the GZip to serve, cannot be <code>null</code>.
+	 * @param mimetype
+	 *            the mime type of the resource, if <code>null</code>, the mimetype will be computed.
+	 * @see MIMEUtils#getMIMEType(String)
+	 */
+	public GzipResourceEndpoint(String uri, String resource, String mimetype) {
+		super(uri, resource, mimetype);
 	}
 
 	@Override
