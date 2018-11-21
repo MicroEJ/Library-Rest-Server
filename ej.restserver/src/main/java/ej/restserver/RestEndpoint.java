@@ -10,6 +10,8 @@ import java.util.Map;
 
 import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
+import ej.resserver.log.Messages;
+import ej.util.message.Level;
 
 /**
  * A REST endpoint exposes resources on a REST server.
@@ -52,7 +54,8 @@ public class RestEndpoint {
 		uri = uri.trim();
 
 		if (uri.isEmpty()) {
-			throw new IllegalArgumentException("URI cannot be empty"); //$NON-NLS-1$
+			throw new IllegalArgumentException(
+					Messages.BUILDER.buildMessage(Level.SEVERE, Messages.CATEGORY, Messages.EMPTY_URI));
 		}
 
 		if (!uri.startsWith(ENDPOINT_PREFIX)) {
