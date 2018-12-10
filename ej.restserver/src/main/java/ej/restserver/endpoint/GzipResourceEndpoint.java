@@ -23,7 +23,6 @@ public class GzipResourceEndpoint extends ResourceRestEndpoint {
 	 */
 	public static final String GZIP_FILE_EXTENSION = ".gz"; //$NON-NLS-1$
 
-	private static final String HEADER_CONTENT_ENCODING = "Content-Encoding"; //$NON-NLS-1$
 	private static final String CONTENT_ENCODING_GZIP = "gzip"; //$NON-NLS-1$
 
 	/**
@@ -67,7 +66,7 @@ public class GzipResourceEndpoint extends ResourceRestEndpoint {
 		}
 
 		RestResponse response = new RestResponse(HTTPConstants.HTTP_STATUS_OK, mimeType, resourceAsStream);
-		response.addHeaderField(HEADER_CONTENT_ENCODING, CONTENT_ENCODING_GZIP);
+		response.addHeaderField(HTTPConstants.FIELD_CONTENT_ENCODING, CONTENT_ENCODING_GZIP);
 		return response;
 	}
 

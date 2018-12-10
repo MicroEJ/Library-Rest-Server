@@ -6,7 +6,7 @@
  */
 package ej.restserver.endpoint;
 
-import java.util.Hashtable;
+import java.util.Map;
 
 import ej.hoka.http.HTTPRequest;
 import ej.hoka.http.HTTPResponse;
@@ -60,26 +60,22 @@ public class AliasEndpoint extends RestEndpoint {
 	}
 
 	@Override
-	public HTTPResponse get(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse get(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return this.endpoint.get(request, headers, parameters);
 	}
 
 	@Override
-	public HTTPResponse post(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse post(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return this.endpoint.post(request, headers, parameters);
 	}
 
 	@Override
-	public HTTPResponse put(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse put(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return this.endpoint.put(request, headers, parameters);
 	}
 
 	@Override
-	public HTTPResponse delete(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse delete(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return this.endpoint.delete(request, headers, parameters);
 	}
 

@@ -7,7 +7,7 @@
 package ej.restserver.endpoint;
 
 import java.io.InputStream;
-import java.util.Hashtable;
+import java.util.Map;
 
 import ej.hoka.http.HTTPConstants;
 import ej.hoka.http.HTTPRequest;
@@ -94,8 +94,7 @@ public class ResourceRestEndpoint extends RestEndpoint {
 	}
 
 	@Override
-	public HTTPResponse get(HTTPRequest request, Hashtable<String, String> headers,
-			Hashtable<String, String> parameters) {
+	public HTTPResponse get(HTTPRequest request, Map<String, String> headers, Map<String, String> parameters) {
 		return this.getResourceResponse();
 	}
 
