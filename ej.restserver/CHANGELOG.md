@@ -1,3 +1,9 @@
+## 4.0.0 (2018-11-21)
+
+Features:
+  - Update to Hoka 5.
+  - Sonar review.
+
 ## 3.2.0 (2018-11-08)
 
 Features:
